@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+url = url {key}
+bookRequest = Rest.get(key)
+books = JSON.parse(bookrequest)
+
+for each book
