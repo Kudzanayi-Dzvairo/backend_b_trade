@@ -7,6 +7,7 @@ Rails.application.routes.draw do
      post'/login', to: 'auth#create'
      get '/profile', to: 'users#profile'
      get '/current_user', to: 'auth#show'
+     post '/user_book', to: 'user_books#create'
     end
   end
 end

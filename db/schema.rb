@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_145012) do
+ActiveRecord::Schema.define(version: 2019_04_13_002642) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 2019_04_09_145012) do
   create_table "user_books", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
-    t.string "shelf"
     t.boolean "currently_reading"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "shelf"
   end
 
   create_table "users", force: :cascade do |t|
