@@ -41,9 +41,12 @@ class Api::V1::UserBooksController < ApplicationController
 	end
 
 	def index
+		@user = User.find(params[:id])
 		@user_book = UserBook.all
 		render json: @user_book
 	end
+
+
 
 	private
 
