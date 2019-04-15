@@ -8,6 +8,7 @@ Rails.application.routes.draw do
      get '/profile', to: 'users#profile'
      get '/current_user', to: 'auth#show'
      post '/user_book', to: 'user_books#create'
+     get '/user_book', to: 'user_books#index'
     end
   end
 end

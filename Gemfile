@@ -49,3 +49,4 @@ gem "jwt"
 gem "faker"
 
 gem 'active_model_serializers'
+gem 'pry', '~> 0.12.2'

@@ -1,5 +1,5 @@
 class Api::V1::UserBooksController < ApplicationController
-	skip_before_action :authorized, only: [:create]
+	skip_before_action :authorized, only: [:create, :index]
 
 =begin
 1. creste book Record
@@ -20,16 +20,18 @@ class Api::V1::UserBooksController < ApplicationController
 
   #POST /user_book
 	def create
-		puts "HI"
-		puts params
+
+		puts "in creates"
+		puts params.keys
+
 		@book = Book.create(book_params)
-		ub_params = user_book_params
+		ub_params= user_book_params
 
 		@user_book = UserBook.create(
 			user_id: ub_params[:user_id],
 			shelf: ub_params[:shelf],
 			book_id: @book.id,
-			currently_reading: false #TODO default currently_reading to false
+			currently_reading: false,
 		)
 
 		render json: {
@@ -38,16 +40,21 @@ class Api::V1::UserBooksController < ApplicationController
 		}
 	end
 
+	def index
+		@user_book = UserBook.all
+		render json: @user_book
+	end
+
 	private
 
 	def book_params
-		puts "book params"
-		puts params 
-		params.require(:book).permit(:title, :author, :description, :page_count, :image)
+  puts "hits"
+	puts params[:shelf]
+	params.require(:book).permit(:title, :author, :description, :page_count, :image)
 	end
 
 	def user_book_params
-		params.require(:user_book).permit(:user_id, :shelf)
+		params.require(:user_book).permit(:user_id, :shelf, :book_id)
 	end
 
 
