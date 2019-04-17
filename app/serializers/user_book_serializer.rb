@@ -1,5 +1,12 @@
 class UserBookSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :book_id, :shelf, :currently_reading
-  # belongs_to :user
-	# belongs_to :book
+  attributes :id, :shelf, :currently_reading, :title, :author
+  belongs_to :user
+	belongs_to :book
+  def title
+    object.book.title
+  end
+
+  def author
+    object.book.author
+  end
 end

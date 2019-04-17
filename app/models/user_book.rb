@@ -1,5 +1,5 @@
 class UserBook < ApplicationRecord
-	enum status: [:shelf, :trades, :wishlist]
+	enum shelf: [:library, :trades, :wishlist]
 	belongs_to :user
 	belongs_to :book
 end

@@ -29,15 +29,12 @@ class Api::V1::UserBooksController < ApplicationController
 
 		@user_book = UserBook.create(
 			user_id: ub_params[:user_id],
-			shelf: ub_params[:shelf],
+			shelf: UserBook.shelves[ub_params[:shelf]],
 			book_id: @book.id,
-			currently_reading: false,
+			currently_reading: false
 		)
 
-		render json: {
-			book: @book,
-			user_book: @user_book
-		}
+		render json: @user_book
 	end
 
 	def index
