@@ -1,5 +1,5 @@
 class UserBookSerializer < ActiveModel::Serializer
-  attributes :id, :shelf, :currently_reading, :title, :author
+  attributes :id, :shelf, :currently_reading, :title, :author, :image
   belongs_to :user
 	belongs_to :book
   def title
@@ -8,5 +8,9 @@ class UserBookSerializer < ActiveModel::Serializer
 
   def author
     object.book.author
+  end
+
+  def image
+    object.book.image
   end
 end

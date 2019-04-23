@@ -1,5 +1,5 @@
 class Api::V1::UserBooksController < ApplicationController
-	skip_before_action :authorized, only: [:create, :index]
+	skip_before_action :authorized, only: [:create, :index, :show]
 
 =begin
 1. creste book Record
@@ -36,6 +36,13 @@ class Api::V1::UserBooksController < ApplicationController
 
 		render json: @user_book
 	end
+
+	def show
+      @user = User.find(params[:id])
+			@userBooks = @user.books
+			render json: @user_book
+		end
+
 
 	def index
 		@user = User.find(params[:id])
